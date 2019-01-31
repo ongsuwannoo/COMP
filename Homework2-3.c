@@ -8,4 +8,6 @@ int main()
     printf("%5.3s%75s", num, "");
     printf("%7.4s%73s", num, "");
     printf("%9.5s", num);
+
+    return 0;
 }
