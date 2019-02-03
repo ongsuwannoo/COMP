@@ -1,9 +1,16 @@
-#include<stdio.h>
-int main()
-{
-    char a,b;
-    scanf("%c", &a);
-	printf("Hello C Programming %c\n", a+1);
-	return 0;
-}
+#include <stdio.h>
+#include <string.h>
 
+int main ()
+{
+    char str[] ="1,2,3,4,5";
+    char *pt;
+    pt = strtok (str,",");
+    printf("\n");
+    while (pt != NULL) {
+        int a = atoi(pt);
+        printf("%d\n", a);
+        pt = strtok (NULL, ",");
+    }
+    return 0;
+}
