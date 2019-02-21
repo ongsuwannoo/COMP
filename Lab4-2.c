@@ -11,7 +11,7 @@ double* sort(double num[])
         int nub = 0;
         for(int i=0 ; i<2 ; i++)
         {
-            if(num[i] <= num[i+1])
+            if(num[i] <= num[i+1]) // check all number sort
                 nub += 1;
             else
                 break;
@@ -22,7 +22,7 @@ double* sort(double num[])
         {
             for(int i=0 ; i<2 ; i++)
             {
-                if(num[i] > num[i+1])
+                if(num[i] > num[i+1]) // compare
                 {
                     num_check = num[i];
                     num[i] = num[i+1];
