@@ -19,52 +19,85 @@ const char * convert(char *c)
     return c;
 }
 
+int compare(char *c_1, char *c_2)
+{
+    int stop = 0, min;
+
+    strlen(c_1) < strlen(c_2) ? min = strlen(c_1) : strlen(c_2);
+
+    for(int i=0 ; i<min ; i++)
+    {
+        if(c_1[i] < c_2[i] && stop == 0) // compare
+        {
+            //printf("if 1 %d %c <-- %c\n", i, c_1[i], c_2[i]);
+            return 1;
+        }
+        if (c_1[i] == c_2[i])
+        {
+            stop += 1;
+        }
+        if (c_1[i] < c_2[i] && stop == i)
+        {
+            //printf("if 2 %d %c <-- %c\n", i, c_1[i], c_2[i]);
+            return 1;
+        }
+        if(c_1[i] > c_2[i] && stop == 0)
+        {
+            //printf("if 3 %d %c --> %c\n", i, c_1[i], c_2[i]);
+            return 0;
+        }
+        if (c_1[i] > c_2[i] && stop == i)
+        {
+            //printf("if 4 %d %c --> %c\n", i, c_1[i], c_2[i]);
+            return 0;
+        }
+    }
+}
+
 int main()
 {
-    char name[20][100], x[100], result[20][100];
-    int stop = 1;
+    char name[20][100], x[100];
 
     for (int i = 0; i < 20; ++i)
     {
         scanf("%[^\n]%*c", name[i]);
         strcpy(name[i], convert(name[i]));
     }
-    for (int i = 0; i < 19; ++i)
+
+    while (1)
     {
-        stop = 1;
-        for (int j = 0; j < strlen(name[i]); ++j)
+        int nub = 0, num;
+
+        for(int i=0 ; i<19 ; i++)
         {
-            if (stop != 0)
+            if(compare(name[i], name[i+1]))
             {
-                for (int k = 0; k < strlen(name[i+1]); ++k)
-                {
-                    if (stop != 0)
-                    {
-                        if (name[i][j] == ' ')
-                            j = j + 1;
-                        if (name[i+1][k] == ' ')
-                            k = k + 1;
-                        if (name[i][j] < name[i+1][k])
-                        {
-                            strcpy(result[i], name[i]);
-                            printf("- 1 - %s <- %s = %s\n", name[i], name[i+1], result[i]);
-                            stop = 0;
-                        }
-                        else if (name[i][j] > name[i+1][k])
-                        {
-                            strcpy(result[i], name[i+1]);
-                            printf("- 2 - %s -> %s = %s\n",name[i+1], name[i], result[i]);
-                            stop = 0;
-                        }
-                    }
-                }
+                //printf("Yes %s <-- %s\n", name[i], name[i+1]);
+                nub += 1;
+            }
+            else
+            {
+                num = i;
+                break;
             }
         }
-
+        if(nub == 19) // main check
+            break;
+        else
+        {
+            if (!compare(name[num], name[num+1]))
+            {
+                //printf("compare %s <--> %s \n", name[num], name[num+1] );
+                strcpy(x, name[num]);
+                strcpy(name[num], name[num+1]);
+                strcpy(name[num+1], x);
+            }
+        }
     }
+
     for (int i = 0; i < 20; ++i)
     {
-        printf("%d %s\n", i+1, result[i]);
+        printf("%s\n", name[i]);
     }
 
     return 0;
