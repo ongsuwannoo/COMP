@@ -8,7 +8,6 @@ int main()
     scanf("%d", &n);
     char s[n], a[n], c, pos = 0;
 
-
     for(int i = 0 ; i < n ; i++)
     {
         scanf(" %c", &a[i]);

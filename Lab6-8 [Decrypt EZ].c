@@ -8,7 +8,7 @@ int main()
     char s[200], encode[] = "ABXYPQRMNCEDKLJOSHTUFVZGWI";
     int x, check = 0, pos;
 
-    scanf("%[^\n]%*c", s);
+    scanf("%[^\n]", &s);
 
     for (int i = 0; i < strlen(s); ++i)
     {

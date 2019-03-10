@@ -5,9 +5,9 @@
 double perimeter(double a, double b)
 {
     double c;
-    c = hypot(a, b);
+    c = hypot(a, b); // c^2 = a^2 + b^2
 
-    return a+b+c; 
+    return a+b+c;
 }
 
 double area(double a, double b)

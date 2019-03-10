@@ -8,14 +8,19 @@ int main()
     for(int i=0 ; i<50 ; i++)
     {
         scanf("%f %f %f", &age, &height, &weight);
+
         if(age >= 20 && height >= 160)
             nub1 = nub1 + 1;
+
         if(age < 20 && (height <= 180 || weight >= 60))
             nub2 = nub2 + 1;
+
         if(age >= 30 && weight >= 40 && weight <= 80)
             nub3 = nub3 + 1;
+
         if(age < 40 && (weight < 85 || height <= 200))
             nub4 = nub4 + 1;
+        
         sum_age = sum_age + age;
         sum_height = sum_height + height;
         sum_weight = sum_weight + weight;
